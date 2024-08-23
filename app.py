@@ -4,7 +4,8 @@ import serial
 app = Flask(__name__)
 
 # Initialize serial communication
-ser = serial.Serial('/dev/cu.usbserial-A1076I9P', 115200)  # Replace with your port
+#ser = serial.Serial('/dev/cu.wlan-debug', 115200) # debug line
+ser = serial.Serial('/dev/cu.usbserial-A1076I9P', 115200)  # Your port here
 
 @app.route('/move', methods=['POST'])
 def move():
@@ -26,4 +27,4 @@ def move():
         return jsonify({"status": "error", "message": response}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8080)
